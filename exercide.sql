@@ -2,10 +2,13 @@
 
 SELECT `name` AS `nome`, `surname` AS `cognome`, `date_of_birth` AS `anno_di_nascita`
 FROM `students`
-WHERE YEAR(`date_of_birth`) LIKE '1990';
+WHERE YEAR(`date_of_birth`) LIKE '1990-';
 
 --2. Selezionare tutti i corsi che valgono più di 10 crediti (479)
 
+SELECT `name` AS `corso`, `cfu` AS `crediti`
+FROM `courses`
+WHERE `cfu` > 10;
 
 
 --3. Selezionare tutti gli studenti che hanno più di 30 anni
