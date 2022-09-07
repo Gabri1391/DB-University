@@ -43,7 +43,7 @@ WHERE `level` = 'magistrale';
 
 --7. Da quanti dipartimenti è composta l'università? (12)
 
-SELECT COUNT(`id`) AS `numero_dipartimenti`
+SELECT COUNT(*) AS `numero_dipartimenti`
 FROM `departments`;
 
 --8. Quanti sono gli insegnanti che non hanno un numero di telefono? (50)
@@ -65,7 +65,7 @@ GROUP BY YEAR(`enrolment_date`);
 
 --2. Contare gli insegnanti che hanno l'ufficio nello stesso edificio
 
-SELECT COUNT(`office_address`) AS 'quantità', `office_address`
+SELECT COUNT(*) AS 'quantità', `office_address`
 FROM `teachers` 
 GROUP BY `office_address`;
 
