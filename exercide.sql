@@ -23,7 +23,8 @@ WHERE TIMESTAMPDIFF(YEAR, `date_of_birth`, CURDATE()) > 30;
 
 SELECT `name` AS `corso`, `period` AS `n_semestre`, `year` AS `anno`
 FROM `courses`
-WHERE `period` = 'I semestre' AND `year` = '1';
+WHERE `period` = 'I semestre'
+AND `year` = '1';
 
 
 --5. Selezionare tutti gli appelli d'esame che avvengono nel pomeriggio (dopo le 14) del
@@ -31,7 +32,8 @@ WHERE `period` = 'I semestre' AND `year` = '1';
 
 SELECT * 
 FROM `exams` 
-WHERE `date` = '2020-06-20' AND `hour` > '14:00:00';
+WHERE `date` = '2020-06-20'
+AND `hour` > '14:00:00';
 
 --6. Selezionare tutti i corsi di laurea magistrale (38)
 
@@ -46,7 +48,8 @@ FROM `departments`;
 
 --8. Quanti sono gli insegnanti che non hanno un numero di telefono? (50)
 
-SELECT COUNT(`phone`) AS 'professorsi_nessun_num_telefonico' FROM `teachers`;
+SELECT COUNT(`phone`) AS 'professorsi_nessun_num_telefonico'
+FROM `teachers`;
 
 
 
@@ -54,7 +57,9 @@ SELECT COUNT(`phone`) AS 'professorsi_nessun_num_telefonico' FROM `teachers`;
 
 --1. Contare quanti iscritti ci sono stati ogni anno
 
-SELECT COUNT(*) AS 'iscritti', YEAR(`enrolment_date`) AS 'anno_accademico' FROM `students` GROUP BY YEAR(`enrolment_date`);
+SELECT COUNT(*) AS 'iscritti', YEAR(`enrolment_date`) AS 'anno_accademico'
+FROM `students` 
+GROUP BY YEAR(`enrolment_date`);
 
 
 --2. Contare gli insegnanti che hanno l'ufficio nello stesso edificio
