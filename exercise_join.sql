@@ -12,7 +12,7 @@ WHERE `degrees`.`name` = 'Corso di Laurea in Economia';
 
 -- 2. Selezionare tutti i Corsi di Laurea del Dipartimento di Neuroscienze
 
-SELECT  *,  `departments`.`name` AS 'dipartimento' 
+SELECT  `degrees`.`name`,  `departments`.`name` AS 'dipartimento' 
 FROM `departments` 
 JOIN `degrees` 
 ON `degrees`.`department_id` = `departments`.`id` 
@@ -22,16 +22,16 @@ WHERE `departments`.`name` = 'Dipartimento di Neuroscienze';
 -- 3. Selezionare tutti i corsi in cui insegna Fulvio Amato (id=44)
 
 SELECT 
-`courses`.*, 
+`courses`.`name`, 
 `teachers`.name AS 'nome_docente', 
-`teachers`.surname AS 'cognome_docente', 
-`teachers`.id AS 'ID' 
+`teachers`.`surname` AS 'cognome_docente'
+`teachers`.`id`, 
 FROM `courses` 
 JOIN `course_teacher` 
 ON `course_teacher`.`course_id` = `courses`.`id` 
 JOIN `teachers` 
 ON `teachers`.`id` = `course_teacher`.`teacher_id` 
-WHERE `teachers`.`id` = 44;
+WHERE `teachers`.`name` = ;'Fulvio' AND `teachers`.`surname` = 'Amato';
 
 
 
@@ -39,21 +39,23 @@ WHERE `teachers`.`id` = 44;
 -- alfabetico per cognome e nome
 
 SELECT 
-`students`.* ,
+`students`.`name`, AS 'nome_studente'
 `degrees`.`name` AS 'corso',
 `departments`.`name` AS 'dipartimento'
 FROM `departments`
+
 JOIN `degrees`
 ON `degrees`.`department_id` = `departments`.`id`
+
 JOIN `students`
 ON `students`.`degree_id` = `degrees`.`id`
-ORDER BY `students`.`surname` , `students`.`name` ASC;
+ORDER BY `students`.`surname` , `students`.`name`;
 
 
 -- 5. Selezionare tutti i corsi di laurea con i relativi corsi e insegnanti
 
 SELECT 
-`degrees`.*,
+`degrees`.`name`,
 `courses`.`name` AS 'corso',
 `teachers`.`name` AS 'nome_docente',
 `teachers`.`surname` AS 'cognome_docente'
